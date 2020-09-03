@@ -1,0 +1,44 @@
+<div class="card m-3">
+    <h5 class="card-header"> Add Transaction</h5>
+    <div class="card-body">
+        <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Transaction Type</label>
+                 <select formControlName="transactionType">
+                     <option value="1">Credit</option>
+                     <option value="2">Debit</option>
+                 </select>
+                    <div *ngIf="submitted && f.transactionType.errors" class="invalid-feedback">
+                        <div *ngIf="f.transactionType.errors.required">This field is required</div>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Amount</label>
+                    <input type="number" formControlName="amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" />
+                    <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+                        <div *ngIf="f.amount.errors.required">This field is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+            <div class="form-group col-5">
+                <label>Description</label>
+                <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+                <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                    <div *ngIf="f.description.errors.required">This field is required</div>
+                </div>
+            </div>
+        </div>
+           
+           
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Add </button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

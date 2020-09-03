@@ -1,0 +1,17 @@
+<button (click)="addTransaction()">Add Transaction</button>
+<table width="100%">
+    <tr>
+        <th align="left">Date</th>
+        <th align="left">Description</th>
+        <th align="right">Credit</th>
+        <th align="right">Debit</th>
+        <th align="right">Running Balance</th>
+    </tr>
+    <tr *ngFor="let item of transactions">
+        <td align="left">{{item.createdDate | date}}</td>
+        <td align="left">{{item.description}}</td>
+        <td align="right">{{ item.credit | currency}}</td>
+        <td align="right">{{ item.debit  | currency}}</td>
+        <td align="right">{{item.balance | currency}}</td>
+    </tr>
+</table>
